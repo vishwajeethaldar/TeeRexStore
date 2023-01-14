@@ -97,22 +97,19 @@ export default function Home() {
       return filterval.types.basic&&filterval.types.basic.toUpperCase()===product.type.toUpperCase() || filterval.types.hoodie&&filterval.types.hoodie.toUpperCase()===product.type.toUpperCase() || filterval.types.polo&&filterval.types.polo.toUpperCase()===product.type.toUpperCase();
     })
   }
-
-  
-    console.log(filteredProducts);
+    // console.log(filteredProducts);
     setProducts(filteredProducts) 
-  
   }
 
   useEffect(()=>{
     setProducts(conval.contval.products)
+    filterProducts()
   },[conval])
 
 useEffect(()=>{
    filterProducts()
   // when filter value state changes call the filterproduct function  
-  console.log(filterval);
-  
+  // console.log(filterval);
 },[filterval])
 
   return (

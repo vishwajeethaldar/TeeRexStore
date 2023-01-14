@@ -1,0 +1,39 @@
+
+.container{
+    width: 100%;
+
+}
+
+.main{
+    display: flex;
+}
+.cartitems{
+    width: 60%;
+    margin-left:20px;
+}
+
+.totalPriceInfo{
+    width: 40%;
+    box-shadow: 1px 2px 3px #ccc, -1px -2px 3px #ccc;
+    min-height: 50vh;
+    margin: 30px 30px auto 30px;
+}
+
+
+@media screen and (max-width:767px) {
+    .main{
+        flex-direction: column;
+    }
+
+    .totalPriceInfo{
+        width: 80%;
+        margin: 25px auto 10px auto;
+        order: 0;
+    }
+    .cartitems{
+        width: 96%;
+        margin:auto;
+        order: 1;
+    }
+
+}
