@@ -13,7 +13,7 @@ export default function Navbar() {
 
         <div className={style.rightpart}>
             <Link to={"/"} className={style.linktext}>  
-                  Products
+                  <span className={style.underline}> Products </span>
             </Link>
 
             <Link to={"/cart"} className={style.linktext}>  

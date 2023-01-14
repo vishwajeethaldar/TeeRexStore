@@ -20,3 +20,8 @@
     font-size: 18px;
     color: #fff;
 }
+
+.underline:hover{
+    border-bottom: 3px solid #d7505d;;
+    transition: all .5s ease-in;
+}
