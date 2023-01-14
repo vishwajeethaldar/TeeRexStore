@@ -1,14 +1,26 @@
 import React from 'react'
+import { errorContext } from '../../context/ErrorContext';
 import { product } from '../../interface';
 import styles from '../../styles/CartItemcard.module.css'
 import { addCount, reduceCount, deleteProductFromCart} from '../../utils/cartfunctions';
 import { Button } from '../Button';
 
+// Cart items card 
 export default function CartItemcard({product,contval,setConval}:{product:product, contval:any, setConval:Function}) {
+   
+    const {error, setError} = React.useContext(errorContext)
+
+    const handleaddCount = ()=>{
+        if(product.count===product.quantity){
+          setError(true)
+        }else{
+          addCount(product,contval,setConval)
+        }
+    }
+
 
    return (
         <main className={styles.cartproduct}>
-            
                 <img src={product.imageURL} alt={product.name} className={styles.productimg}/>
                 
                 <div className={styles.prodctinfo}>
@@ -17,7 +29,7 @@ export default function CartItemcard({product,contval,setConval}:{product:produc
                 </div>
           
                 <div className={styles.updateCartitem}>
-                    <Button text='+' onClick={()=>addCount(product,contval,setConval)}/>
+                    <Button text='+' onClick={handleaddCount}/>
                     <p>{product.count}</p>
                     <Button text='-' onClick={()=>reduceCount(product,contval,setConval)}/>
                 </div>

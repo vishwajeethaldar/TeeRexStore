@@ -1,23 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Button } from '../components/Button'
-import Footer from '../components/Footer'
-import Navbar from '../components/nav/Navbar'
-import Filter from '../components/product/Filter'
-import Products from '../components/product/Products'
-import Searchbar from '../components/Searchbar'
-import { productContext } from '../context/ProductContext'
-import { filterval, IContext, product } from '../interface'
-import { AiFillCloseSquare } from 'react-icons/ai'
-
-import styles from '../styles/Home.module.css'
+import { useContext, useEffect, useState } from 'react'  
+import { Button } from '../components/Button'  //custom button component
+import Footer from '../components/Footer'  //footer component
+import Navbar from '../components/nav/Navbar'  //navbar component
+import Filter from '../components/product/Filter' //filter component
+import Products from '../components/product/Products' // products component
+import Searchbar from '../components/Searchbar' // searchbar component
+import { productContext } from '../context/ProductContext' // product context
+import { filterval, product } from '../interface'  // typescript interface declaration for filter and product
+import { AiFillCloseSquare } from 'react-icons/ai'  //react icons
+import AlertMsg from '../components/AlertMsg'  //custom alert component
+import styles from '../styles/Home.module.css' //css module for Home page
+import { filterProducts } from '../utils/productsfunction'  //product filter function
 
 
 export default function Home() {
-  const [products, setProducts] =  useState<Array<product>>([]) 
-  const [searchtext, setSearchtext] = useState<string>("")
-  const [mobileFilter, setMobileFilter] =  useState<boolean>(false)
-  const conval =  useContext(productContext)
+  const [products, setProducts] =  useState<Array<product>>([])  // this state will store copy of products from global context and these products will be visible on screen
+  const [searchtext, setSearchtext] = useState<string>("")     // state to maintain search string
+  const [mobileFilter, setMobileFilter] =  useState<boolean>(false)  // state to toggle the filter on small device
+  const conval =  useContext(productContext)  // global context of products and total cart item
   
+  // state based in filter will work
   const [filterval, setFilterval] = useState<filterval>({
       colors:{
           red:"",
@@ -40,84 +42,24 @@ export default function Home() {
       }
   })
 
-  // Function to search products
-  const searchData = ()=>{
-    if(searchtext===""){
-      setProducts(conval.contval.products) 
-      return 
-    }
-    let searchedProducts = conval.contval.products.filter((product:product)=>{
-        return product.name.toUpperCase().includes(searchtext.toUpperCase()) || product.color.toUpperCase().includes(searchtext.toUpperCase()) || product.type.toUpperCase().includes(searchtext.toUpperCase())
-    })
-    setProducts(searchedProducts)   
-  }
 
-  // filter Products
-  const filterProducts = ()=>{
-    // if searchtext is empty and nothing is present in filter object then display all the products.
-    if(searchtext==="" && !filterval.colors.blue && !filterval.colors.red && !filterval.colors.green && !filterval.gender.men && !filterval.gender.women && !filterval.price.first && !filterval.price.second && !filterval.price.third && !filterval.types.basic && !filterval.types.hoodie && !filterval.types.polo){
-      setProducts(conval.contval.products) 
-      return;    
-    }
-
-
-    // if seartext is present 
-    let filteredProducts = [];
-
-    if(searchtext!==""){
-      filteredProducts = conval.contval.products.filter((product:product)=>{
-                return product.name.toUpperCase().includes(searchtext.toUpperCase()) || product.color.toUpperCase().includes(searchtext.toUpperCase()) || product.type.toUpperCase().includes(searchtext.toUpperCase())
-            })
-    }else{
-      filteredProducts = conval.contval.products
-    }
-   
-    if(filterval.colors.blue||filterval.colors.red||filterval.colors.green){
-        filteredProducts = filteredProducts.filter((product:product)=>{   
-          return  (
-            filterval.colors.blue&&product.color.toUpperCase()===filterval.colors.blue.toUpperCase()|| filterval.colors.red && product.color.toUpperCase()===filterval.colors.red.toUpperCase()|| filterval.colors.green && product.color.toUpperCase()===filterval.colors.green.toUpperCase()
-          )
-        })
-    }
-
-    if(filterval.gender.men||filterval.gender.women){
-      filteredProducts = filteredProducts.filter((product:product)=>{
-        return filterval.gender.men&&product.gender.toUpperCase()===filterval.gender.men.toUpperCase() ||filterval.gender.women&&product.gender.toUpperCase()===filterval.gender.women.toUpperCase()
-      })
-    }
-  
-   
-  if(filterval.price.first||filterval.price.second||filterval.price.third){
-    filteredProducts = filteredProducts.filter((product:product)=>{
-      return filterval.price.first&&product.price<=250 || filterval.price.second&&product.price>250 &&  product.price<=450 ||  filterval.price.third&&product.price>450
-    })
-  }
-
-  if(filterval.types.basic||filterval.types.hoodie||filterval.types.polo){
-    filteredProducts = filteredProducts.filter((product:product)=>{
-      return filterval.types.basic&&filterval.types.basic.toUpperCase()===product.type.toUpperCase() || filterval.types.hoodie&&filterval.types.hoodie.toUpperCase()===product.type.toUpperCase() || filterval.types.polo&&filterval.types.polo.toUpperCase()===product.type.toUpperCase();
-    })
-  }
-    // console.log(filteredProducts);
-    setProducts(filteredProducts) 
-  }
-
-  useEffect(()=>{
-    setProducts(conval.contval.products)
-    filterProducts()
-  },[conval])
 
 useEffect(()=>{
-   filterProducts()
+  setProducts(conval.contval.products)
+  filterProducts(searchtext,filterval,conval,setProducts)
+},[conval])
+
+useEffect(()=>{
+  filterProducts(searchtext,filterval,conval,setProducts)
   // when filter value state changes call the filterproduct function  
-  // console.log(filterval);
 },[filterval])
 
   return (
     <div>
       <Navbar/>
+
       <div className={styles.searchsection}>
-            <Searchbar  searchf={filterProducts} updateSearchTextf={setSearchtext} toggleF={setMobileFilter} toggval={mobileFilter}/> 
+            <Searchbar  searchf={()=>filterProducts(searchtext,filterval,conval,setProducts)} updateSearchTextf={setSearchtext} toggleF={setMobileFilter} toggval={mobileFilter}/> 
       </div>
       <main className={styles.main}>
         <aside className={mobileFilter?styles.smFilterSection:styles.filtersection}>
@@ -131,11 +73,18 @@ useEffect(()=>{
         </aside>
 
         <section className={styles.productSection}>
+            {products.length===0?
+            <img src="/img/no-products.jpg" alt="no products found" className={styles.noproductimg}/>:
             <Products products={products}/>
-        </section>
+            }
+          </section>
       </main>
 
       <Footer/>
+
+      {/* Custom error alert  */}
+      <AlertMsg type='error' title="Unable to Add" description='Store is out of quantity for this product' duration={5}/>  
+      
     </div>
   )
 }

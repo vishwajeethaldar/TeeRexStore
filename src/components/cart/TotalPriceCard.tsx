@@ -4,6 +4,7 @@ import { productContext } from '../../context/ProductContext'
 import styles from '../../styles/TotalPriceCard.module.css'
 import { Button } from '../Button'
 
+// Total Price card
 export default function TotalPriceCard({totalPrice}:{totalPrice:number}) {
   const {contval} = useContext(productContext)
   

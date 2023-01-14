@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import { errorContext } from '../../context/ErrorContext'
 import { productContext } from '../../context/ProductContext'
 import { product } from '../../interface'  //Typescript interface for products
 import styles from '../../styles/Productcard.module.css'
@@ -7,7 +8,16 @@ import { Button } from '../Button'
 
 export default function Productcard({product}:{product:product}) {
   const {contval, setConval} = useContext(productContext);
+  const {error, setError} = useContext(errorContext)
 
+  const handleaddCount = ()=>{
+      if(product.count===product.quantity){
+        setError(true)
+      }else{
+        addCount(product,contval,setConval)
+      }
+   
+  }
   return (
     <div className={styles.container}>
         <h3 className={styles.productname}> {product.name} </h3>
@@ -24,14 +34,12 @@ export default function Productcard({product}:{product:product}) {
             </div>
           :
             <div className={styles.updateCartitem}>
-                <Button text='+' onClick={()=>addCount(product,contval,setConval)}/>
+                <Button text='+' onClick={handleaddCount}/>
                 <p>{product.count}</p>
                 <Button text='-' onClick={()=>reduceCount(product,contval,setConval)}/>
             </div>
           }
-             
-             
-        </section>
+         </section>
     </div>
   )
 }

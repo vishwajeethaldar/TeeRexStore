@@ -25,7 +25,10 @@
 .filtertitle{
     display: none;    
 }
-
+.noproductimg{
+    width: 50%;
+    height: 70%;
+}
 @media screen and (max-width:767px) {
     .main{
         flex-direction: column;

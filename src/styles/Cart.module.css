@@ -1,11 +1,17 @@
-
+/* Cart container style */
 .container{
     width: 100%;
 }
-
+/* image when cart is empty */
+.emptycartimg{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 20px;
+}
 .main{
     display: flex;
 }
+
 .cartitems{
     width: 60%;
     margin-left:20px;

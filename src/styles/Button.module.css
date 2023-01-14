@@ -1,5 +1,4 @@
 /* Default button Style */
-
 button{
     background-color: black;
     color: #fff;
@@ -7,13 +6,13 @@ button{
     border-radius: 5px;
     font-weight: bold;
 }
+button:hover{
+    cursor: pointer;
+}
 
 /* Buttons visible for smaller Device only */
 .m-btn{
     display: none; 
-}
-button:hover{
-    cursor: pointer;
 }
 
 

@@ -3,7 +3,7 @@ import Routes from './routes/Routes'
 function App() {
   return (
     <div>
-      {/* Executing Routes component */}
+      {/* Executing only Routes component here */}
       <Routes />
     </div>
   )
