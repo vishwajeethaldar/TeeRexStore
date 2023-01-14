@@ -16,9 +16,20 @@ button:hover{
     cursor: pointer;
 }
 
+
+
 /* Styles for device width <= 767px */
 @media screen and (max-width:767px) {
     .m-btn{
         display: block;
+        font-size: 14px;
+        font-weight: 100;
+    }
+    .closebtn{
+        background-color: #eee;
+        border: none;
+        color: #000;
+        font-size: 24px;
+        padding: 0px;
     }
 }

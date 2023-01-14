@@ -7,6 +7,7 @@ import Products from '../components/product/Products'
 import Searchbar from '../components/Searchbar'
 import { productContext } from '../context/ProductContext'
 import { filterval, IContext, product } from '../interface'
+import { AiFillCloseSquare } from 'react-icons/ai'
 
 import styles from '../styles/Home.module.css'
 
@@ -116,11 +117,17 @@ useEffect(()=>{
     <div>
       <Navbar/>
       <div className={styles.searchsection}>
-            <Searchbar  searchf={searchData} updateSearchTextf={setSearchtext} toggleF={setMobileFilter} toggval={mobileFilter}/> 
+            <Searchbar  searchf={filterProducts} updateSearchTextf={setSearchtext} toggleF={setMobileFilter} toggval={mobileFilter}/> 
       </div>
       <main className={styles.main}>
         <aside className={mobileFilter?styles.smFilterSection:styles.filtersection}>
+          
+          <div className={styles.filtertitle}>
+              <h4>Filters</h4>
+              <Button Icon={AiFillCloseSquare} className="closebtn" onClick={()=>setMobileFilter(!mobileFilter)}/>
+          </div>
             <Filter filterval={filterval} updateFilterval={setFilterval}/>
+
         </aside>
 
         <section className={styles.productSection}>

@@ -1,7 +1,6 @@
 
 .container{
     width: 100%;
-
 }
 
 .main{
@@ -15,7 +14,7 @@
 .totalPriceInfo{
     width: 40%;
     box-shadow: 1px 2px 3px #ccc, -1px -2px 3px #ccc;
-    min-height: 50vh;
+
     margin: 30px 30px auto 30px;
 }
 

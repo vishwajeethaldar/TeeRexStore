@@ -1,10 +1,13 @@
 import { filterval } from '../../interface'
 import styles from '../../styles/Filter.module.css'
+import { Button } from '../Button'
+
 
 export default function Filter({filterval, updateFilterval}:{filterval:filterval, updateFilterval:Function}) {
     
     return (
-    <main className={styles.container}>
+       <main className={styles.container}>
+        <h2 className={styles.title}> Filters </h2>
         {/* Color Filters */}
         <section className={styles.multiSelction}>
             <h3>Colors</h3>
@@ -35,7 +38,7 @@ export default function Filter({filterval, updateFilterval}:{filterval:filterval
             </div>
             <div className={styles.selctbox}>
                 <input name='color' type="checkbox" value={"women"} onChange={(e)=>{
-                   updateFilterval({...filterval,gender:{men:filterval.gender.men||"",women:e.target.checked?e.target.value:""}})
+                updateFilterval({...filterval,gender:{men:filterval.gender.men||"",women:e.target.checked?e.target.value:""}})
                 }}/> Women 
             </div>
         </section>
@@ -80,5 +83,6 @@ export default function Filter({filterval, updateFilterval}:{filterval:filterval
             </div>
         </section>
     </main>
+
   )
 }

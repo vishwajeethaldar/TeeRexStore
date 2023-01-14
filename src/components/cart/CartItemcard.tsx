@@ -8,7 +8,9 @@ export default function CartItemcard({product,contval,setConval}:{product:produc
 
    return (
         <main className={styles.cartproduct}>
-            <img src={product.imageURL} alt={product.name} className={styles.productimg}/>
+            
+                <img src={product.imageURL} alt={product.name} className={styles.productimg}/>
+                
                 <div className={styles.prodctinfo}>
                     <h4 className={styles.productname}> {product.name} </h4>
                     <p className={styles.productprice}> Rs. {product.price}</p>
@@ -21,7 +23,7 @@ export default function CartItemcard({product,contval,setConval}:{product:produc
                 </div>
 
                 <div className={styles.removebtn}>
-                    <Button text='Remove Product' onClick={()=>deleteProductFromCart(product,contval,setConval)}/>
+                    <Button text='Delete' onClick={()=>deleteProductFromCart(product,contval,setConval)}/>
                 </div>
            
         </main>
