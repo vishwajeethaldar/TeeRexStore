@@ -1,0 +1,15 @@
+.container{
+   padding: 10px 5px 0px 5px;
+    position: relative;
+
+}
+.icon{
+    font-size: 32px;
+}
+.itemcount{
+    position: absolute;
+    right: 5px;
+    top: 0px;
+    font-size: 14px;
+    font-weight: 800;
+}

@@ -1,0 +1,48 @@
+.main{
+    display: flex;
+    padding: 15px 50px;
+
+}
+.filtersection{
+    width: 20%;
+}
+.smFilterSection{
+    display: block;
+    width: 20%;
+}
+.productSection{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 80%;
+}
+.searchsection{
+    gap: 10px;
+    width: 50%;
+    margin: auto;
+    padding: 5px 20px;
+}
+
+
+@media screen and (max-width:767px) {
+    .main{
+        flex-direction: column;
+        padding: 15px 10px;
+    }
+    .filtersection{
+        width: 100%;
+        display: none;
+    }
+    .smFilterSection{
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .productSection{
+        width: 100%;
+    }
+    .searchsection{
+        width: 100%;
+    }
+}

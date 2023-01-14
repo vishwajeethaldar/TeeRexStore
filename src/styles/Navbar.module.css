@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+    align-items: center;
+    background: #E7717D;
+}
+
+.rightpart{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.linktext{
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+}

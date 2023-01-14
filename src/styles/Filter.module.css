@@ -1,0 +1,40 @@
+.container{
+    box-shadow: 1px 2px 4px #eee, -1px -2px 4px #eee;
+    padding: 15px 10px 15px 20px ;
+    /* background: #f5939d; */
+}
+
+.multiSelction{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 15px;
+}
+
+.selctbox{
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    gap: 20px;
+    margin-left: 15px;
+    color: #000;
+    font-size: 18px;
+}
+
+
+@media screen and (max-width:767px) {
+    .container{
+        display: flex;
+        gap: 20px;
+        justify-content:flex-start;
+        flex-wrap: wrap;
+    }
+    .multiSelction{
+        border: 1px solid #ccc;
+        padding: 20px;
+    }
+    .selctbox{
+        margin-left: 0px;
+        
+    }
+}

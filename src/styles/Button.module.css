@@ -1,0 +1,24 @@
+/* Default button Style */
+
+button{
+    background-color: black;
+    color: #fff;
+    padding: 7px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Buttons visible for smaller Device only */
+.m-btn{
+    display: none; 
+}
+button:hover{
+    cursor: pointer;
+}
+
+/* Styles for device width <= 767px */
+@media screen and (max-width:767px) {
+    .m-btn{
+        display: block;
+    }
+}
