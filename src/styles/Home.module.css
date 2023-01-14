@@ -42,14 +42,14 @@
     .smFilterSection{
         width: 60%;
         display: block;
-        position: absolute;
+        position: fixed;
         top: 52px;
         left: 0px;
         margin-bottom: 20px;
         min-height: 100%;
         background-color: #fff;
         z-index: 10;
-
+        min-height: 94vh;
     }
    
     .productSection{

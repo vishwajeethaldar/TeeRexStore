@@ -32,6 +32,8 @@
         gap: 10px;
         justify-content:flex-start;
         flex-wrap: wrap;
+        box-shadow: none;
+        border-right: 1px solid #ccc;
     }
     .multiSelction{
         padding: 5px;
