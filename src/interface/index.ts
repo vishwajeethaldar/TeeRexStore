@@ -18,3 +18,24 @@ export interface IContext {
     totalcartItem:number
 }
 
+export interface filterval {
+    colors:{
+        red:string;
+        blue:string;
+        green:string;
+    };
+    gender:{
+        men:string;
+        women:string;
+    };
+    price:{
+        first:string;
+        second:string;
+        third:string;
+    }
+    types:{
+        polo:string;
+        hoodie:string;
+        basic:string;
+    }
+}
