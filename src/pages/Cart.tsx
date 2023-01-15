@@ -49,7 +49,8 @@ export default function Cart() {
       </main>
      
      {/* Error Alert */}
-      <AlertMsg type='error' title="Unable to Add" description='Store is out of quantity for this product' duration={5}/> 
+     <AlertMsg type='error' title="Error" description='We have limited quantity for this product in our store, we will notify you when we avail more products in our store' duration={5}/>  
+      
     </div>
   )
 }
