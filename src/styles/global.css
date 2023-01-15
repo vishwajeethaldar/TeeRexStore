@@ -1,6 +1,26 @@
 /* default styles for all  the components */
+
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
+
+
+/* custom scroll bar style start */
+
+body::-webkit-scrollbar {
+    width: .5em;
+}
+
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(245, 152, 152, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #E7717D;;
+    outline: 1px solid #c2505b;;
+    border-radius: 50px;
+}
+
+/* custom scroll bar style end */
