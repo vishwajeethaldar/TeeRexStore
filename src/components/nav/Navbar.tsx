@@ -8,7 +8,8 @@ export default function Navbar() {
   return (
     <nav className={style.container}>
         <Link to={"/"} className={style.linktext}> 
-                TeeRex Store 
+                {/* TeeRex Store  */}
+                <img src="/img/TeerexLogo.png" alt="Teerex" className={style.brandlogo}/>
         </Link>
 
         <div className={style.rightpart}>
