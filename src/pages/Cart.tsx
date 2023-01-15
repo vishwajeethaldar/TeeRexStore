@@ -44,7 +44,7 @@ export default function Cart() {
         </section>
 
         <aside className={styles.totalPriceInfo}>
-              <TotalPriceCard totalPrice={totalPrice}/>
+              {contval.totalcartItem>0 && <TotalPriceCard totalPrice={totalPrice}/>}
         </aside>
       </main>
      

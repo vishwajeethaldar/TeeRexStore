@@ -3,7 +3,7 @@ import Productcard from "./Productcard";
 
 import styles from '../../styles/Products.module.css'
 
-
+// display all the products
 export default function Products({products}:{products:Array<product>}) {
   
   return (

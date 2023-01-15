@@ -2,7 +2,7 @@ import React from 'react'
 import { errorContext } from '../context/ErrorContext'
 import styles from '../styles/AlertMsg.module.css';
 
-
+// Alert Component this component is to diplay alert messages on screen
 export default function AlertMsg({type="success", description, title, duration}:{type:string, description:string, title:string,duration:number}) {
   const {error, setError} = React.useContext(errorContext)
 

@@ -11,6 +11,7 @@ import { AiFillCloseSquare } from 'react-icons/ai'  //react icons
 import AlertMsg from '../components/AlertMsg'  //custom alert component
 import styles from '../styles/Home.module.css' //css module for Home page
 import { filterProducts } from '../utils/productsfunction'  //product filter function
+import Loader from '../components/Loader'
 
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
   const [searchtext, setSearchtext] = useState<string>("")     // state to maintain search string
   const [mobileFilter, setMobileFilter] =  useState<boolean>(false)  // state to toggle the filter on small device
   const conval =  useContext(productContext)  // global context of products and total cart item
-  
+  const [showLoader, setShowLoader]  = useState<boolean>(true)  //State to display loader
   // state based in filter will work
   const [filterval, setFilterval] = useState<filterval>({
       colors:{
@@ -50,10 +51,15 @@ useEffect(()=>{
 },[conval])
 
 useEffect(()=>{
+  setShowLoader(true)
   filterProducts(searchtext,filterval,conval,setProducts)
+  setShowLoader(false)
   // when filter value state changes call the filterproduct function  
 },[filterval])
 
+useEffect(()=>{
+  setShowLoader(false)
+},[])
   return (
     <div>
       <Navbar/>
@@ -85,6 +91,8 @@ useEffect(()=>{
       {/* Custom error alert  */}
       <AlertMsg type='error' title="Unable to Add" description='Store is out of quantity for this product' duration={5}/>  
       
+      {/* Loader Component */}
+     {showLoader && <Loader/>}
     </div>
   )
 }

@@ -10,6 +10,7 @@ export default function Productcard({product}:{product:product}) {
   const {contval, setConval} = useContext(productContext);
   const {error, setError} = useContext(errorContext)
 
+  // handling some condition before incrementing the count 
   const handleaddCount = ()=>{
       if(product.count===product.quantity){
         setError(true)
