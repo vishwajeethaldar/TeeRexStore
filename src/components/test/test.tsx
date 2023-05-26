@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { errorContext } from '../../context/ErrorContext'
 import styles from '../styles/AlertMsg.module.css';
@@ -27,4 +26,7 @@ export default function AlertMsg({type="success", description, title, duration}:
     </div>
   )
 }
+<<<<<<< HEAD
 >>>>>>> d51626c (test32)
+=======
+>>>>>>> 0a0e84bb9f44b0b8300e022b35ffa1e6dd99fa2d
